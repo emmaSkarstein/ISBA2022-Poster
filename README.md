@@ -11,7 +11,7 @@ By using integrated nested Laplace approximations (INLA) we show how potentially
 
 TODO: Adjust this to the poster presentation
 
-# THE MOST GENERAL MODEL: Missing data, classical measurement error and Berkson measurement error
+# MISSING DATA, CLASSICAL MEASUREMENT ERROR AND BERKSON MEASUREMENT ERROR
 TODO: Equations and text from the paper
 
 # EXAMPLES
