@@ -19,7 +19,8 @@ We show how the measurement error model presented by Muff et al. (2015) can be u
 A particularly important special case of our presented model is the one for only missing data, with no measurement error occurring. This leads to a straight-forward way to do missing value imputation for the covariates in INLA, which, as mentioned, is something that has not been well covered in the INLA literature previously. Gómez-Rubio et al. (2019) show how to do missing data imputation in INLA in a more general case, when the missingness is not at random. But in practice, an imputation model may often be sufficient for our needs, and when we have reason to believe that our data is missing at random this will be a lot easier to implement. 
 
 # MODEL STRUCTURE
-See the equation on the poster for the formulas.
+
+![posterequation](https://github.com/emmaSkarstein/ISBA2022-Poster/blob/main/poster_equation.png)
 
 **MODEL OF INTEREST** The first level of the model is the actual model of interest, a generalized linear (mixed) model where one or more covariates have measurement error or missing values (or both). 
 
