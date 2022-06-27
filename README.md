@@ -33,4 +33,9 @@ A particularly important special case of our presented model is the one for only
 The paper summarizing this work is still not completely finished as of ISBA 2022, but if you are interested, you are welcome to ask for a copy of the draft by e-mailing me at emma.s.skarstein@ntnu.no.
 
 
+# REFERENCES
+
+Gómez-Rubio, V., Cameletti, M., and Blangiardo, M. (2019). Missing data analysis and imputation via latent Gaussian Markov random fields. Preprint, arXiv:1912.10981.
+
+Muff, S., Riebler, A., Held, L., Rue, H., and Saner, P. (2015). Bayesian analysis of measurement error models using integrated nested Laplace approximations. Journal of the Royal Statistical Society: Series C (Applied Statistics), 64(2):231-252.
 
