@@ -20,10 +20,6 @@ knitr::opts_chunk$set(
 library(INLA)
 ```
 
-$$
-\def\na{\texttt{NA}}
-$$
-
 We here provide a simulation example that illustrates the missing data and measurement error model, with extensive comments.
 
 
@@ -222,7 +218,32 @@ model1 <- inla(formula, data = dd,
 
 # Results
 
+```{r echo = FALSE}
+return_estimates <- function(inla.object){
+  fixed <- data.frame(inla.object$summary.fixed)
+  fixed <- fixed[, names(fixed) != "kld"]
+  fixed$coefficient.name <- rownames(fixed)
+  hyperpar <- data.frame(inla.object$summary.hyperpar)
+  hyperpar$coefficient.name <- rownames(hyperpar)
+
+  # Extract all coefficients that contain "beta" (the coefficients of the model of interest)
+  betas <- rbind(dplyr::filter(fixed, grepl("beta", coefficient.name)),
+                 dplyr::filter(hyperpar, grepl("beta", coefficient.name)))
+  # Extract all coefficients that contain "alpha" (the coefficients of the imputation model)
+  alphas <- dplyr::filter(fixed, grepl("alpha", coefficient.name))
+
+  return(rbind(alphas, betas))
+}
+
+results_df <- return_estimates(model1)[,1:2]
+
+results_df$true_values <- c(1, 0.5, 1, 1, 1)
+
+results_df
+```
+
 ```{r echo = TRUE}
 summary(model1)
 ```
+
 

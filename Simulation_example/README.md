@@ -3,18 +3,10 @@ data
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges: start -->
-<!-- badges: end -->
 
 ``` r
 library(INLA)
 ```
-
-![
-\\def\\na{\\texttt{NA}}
-](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0A%5Cdef%5Cna%7B%5Ctexttt%7BNA%7D%7D%0A "
-\def\na{\texttt{NA}}
-")
 
 We here provide a simulation example that illustrates the missing data
 and measurement error model, with extensive comments.
@@ -154,7 +146,7 @@ The hierarchical model described in the above section is fit in INLA as
 a joint model using the feature. We first specify the models in the
 following matrices and vectors:
 
-![matrixformulation](https://github.com/emmaSkarstein/ISBA2022-Poster/blob/main/Simulation%20example/matrix_equations.png)
+![matrixformulation](https://github.com/emmaSkarstein/ISBA2022-Poster/blob/main/Simulation_example/matrix_equations.png)
 
 We specify these matrices in our code:
 
@@ -294,6 +286,13 @@ model1 <- inla(formula, data = dd,
 
 # Results
 
+    #>                      mean         sd true_values
+    #> alpha.0         1.0079051 0.06033315         1.0
+    #> alpha.z         0.5189650 0.06281501         0.5
+    #> beta.0          1.1001236 0.06305786         1.0
+    #> beta.z          0.9458352 0.05537032         1.0
+    #> Beta for beta.x 0.9485297 0.03871732         1.0
+
 ``` r
 summary(model1)
 #> 
@@ -316,13 +315,13 @@ summary(model1)
 #>    = inla.mode, safe = FALSE, debug = debug, ", " .parent.frame = 
 #>    .parent.frame)") 
 #> Time used:
-#>     Pre = 3.83, Running = 1.59, Post = 0.0842, Total = 5.5 
+#>     Pre = 4.01, Running = 1.56, Post = 0.0877, Total = 5.66 
 #> Fixed effects:
 #>          mean    sd 0.025quant 0.5quant 0.975quant mode kld
-#> beta.0  1.150 0.063      1.025    1.150      1.273   NA   0
-#> beta.z  1.038 0.057      0.926    1.038      1.148   NA   0
-#> alpha.0 0.982 0.059      0.867    0.982      1.097   NA   0
-#> alpha.z 0.597 0.061      0.477    0.597      0.717   NA   0
+#> beta.0  1.100 0.063      0.976    1.101      1.222   NA   0
+#> beta.z  0.946 0.055      0.836    0.946      1.054   NA   0
+#> alpha.0 1.008 0.060      0.890    1.008      1.126   NA   0
+#> alpha.z 0.519 0.063      0.396    0.519      0.642   NA   0
 #> 
 #> Random effects:
 #>   Name     Model
@@ -332,15 +331,15 @@ summary(model1)
 #> 
 #> Model hyperparameters:
 #>                                             mean    sd 0.025quant 0.5quant
-#> Precision for the Gaussian observations    7.935 2.926      4.010    7.338
-#> Precision for the Gaussian observations[3] 0.500 0.036      0.430    0.499
-#> Beta for beta.x                            0.944 0.041      0.863    0.944
+#> Precision for the Gaussian observations    7.449 2.635      3.635    7.000
+#> Precision for the Gaussian observations[3] 0.463 0.033      0.402    0.462
+#> Beta for beta.x                            0.949 0.039      0.873    0.948
 #>                                            0.975quant mode
-#> Precision for the Gaussian observations        15.296   NA
-#> Precision for the Gaussian observations[3]      0.573   NA
+#> Precision for the Gaussian observations        13.875   NA
+#> Precision for the Gaussian observations[3]      0.532   NA
 #> Beta for beta.x                                 1.025   NA
 #> 
-#> Marginal log-Likelihood:  -11733.30 
+#> Marginal log-Likelihood:  -11773.74 
 #>  is computed 
 #> Posterior summaries for the linear predictor and the fitted values are computed
 #> (Posterior marginals needs also 'control.compute=list(return.marginals.predictor=TRUE)')
