@@ -28,6 +28,9 @@ A particularly important special case of our presented model is the one for only
 
 **IMPUTATION MODEL** The last level is the imputation model. In the measurement error context, this describes how the true value of the mis-observed covariate is allowed to depend on other variables of the model, thus taking advantage of potential correlations to inform the estimation of this covariate, along with the measurement error model. If the observation is completely missing, then the imputation model alone imputes the missing value. The imputation model is connected to the model of interest through the measurement error model. 
 
+# SIMULATION EXAMPLE
+For a simulation example, see [here](https://github.com/emmaSkarstein/ISBA2022-Poster/tree/main/Simulation_example).
+
 # FUTURE PLANS
 Of course, first I hope to publish the paper on this! In addition to providing detailed code for fitting the model in three different scenarios, we will also show how to fit it using inlabru, which gives a slightly cleaner setup.
 
@@ -41,9 +44,11 @@ The paper summarizing this work is still not completely finished as of ISBA 2022
 
 Gómez-Rubio, V., Cameletti, M., and Blangiardo, M. (2019). Missing data analysis and imputation via latent Gaussian Markov random fields. Preprint, arXiv:1912.10981.
 
+Gómez-Rubio, V. (2020). Bayesian Inference with INLA. CRC Press.
+
 Muff, S., Riebler, A., Held, L., Rue, H., and Saner, P. (2015). Bayesian analysis of measurement error models using integrated nested Laplace approximations. Journal of the Royal Statistical Society: Series C (Applied Statistics), 64(2):231-252.
 
 
 # POSTER DESIGN
-The poster design is copied from this [Psycho poster](https://www.goldposter.com/10058/). I have also been inspired by Mike Morrison's \#betterposter campaign, and would definitely recommend checking out his videos on how to make better academic posters in less time, here is one of them: https://www.youtube.com/watch?v=WBjhxjWDiHw. Of course, Mike Morrison's point is to help researchers spend less time on their posters. But I really like fiddling with the design of my poster, and so I tried to adapt his principles while simultaneously trying to copy the design of the movie poster. I think vintage movie posters or advertisements are actually great models for how we could design academic posters, as they grab your attention with impactful and attractive colors and fonts, while at the same time not being too over-crowded and often very minimalistic. I think this use of fonts, colors and simplistic figures or icons can be a great guide, and copying a movie poster makes it more of an interesting challenge rather than a frustration. 
+The poster design is copied from [this poster](https://www.goldposter.com/10058/) for the 1960 movie Psycho. I have also been inspired by Mike Morrison's \#betterposter campaign, and would definitely recommend checking out his videos on how to make clear academic posters in less time, here is one of them: https://www.youtube.com/watch?v=WBjhxjWDiHw. Of course, Mike Morrison's point is to help researchers spend less time on their posters. But I really like fiddling with the design of my poster, and so I tried to adapt his principles while simultaneously trying to copy the design of the movie poster. I think vintage movie posters or advertisements are actually great models for how we could design academic posters, as they grab your attention with impactful and attractive colors and fonts, while at the same time not being too over-crowded and often very minimalistic. I think this use of fonts, colors and simplistic figures or icons can be a great guide, and copying a movie poster makes it more of an interesting challenge rather than a frustration. 
 
