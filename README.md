@@ -28,9 +28,13 @@ A particularly important special case of our presented model is the one for only
 
 **IMPUTATION MODEL** The last level is the imputation model. In the measurement error context, this describes how the true value of the mis-observed covariate is allowed to depend on other variables of the model, thus taking advantage of potential correlations to inform the estimation of this covariate, along with the measurement error model. If the observation is completely missing, then the imputation model alone imputes the missing value. The imputation model is connected to the model of interest through the measurement error model. 
 
+# FUTURE PLANS
+Of course, first I hope to publish the paper on this! In addition to providing detailed code for fitting the model in three different scenarios, we will also show how to fit it using inlabru, which gives a slightly cleaner setup.
+
+An R-package to more easily use the model is in the works, stay tuned if this is of interest! 
 
 # WOULD YOU LIKE TO LEARN MORE?
-The paper summarizing this work is still not completely finished as of ISBA 2022, but if you are interested, you are welcome to ask for a copy of the draft by e-mailing me at emma.s.skarstein@ntnu.no.
+The paper summarizing this work is still not completely finished as of ISBA 2022, but if you are interested, you are welcome to ask for a copy of the draft by e-mailing me at emma.s.skarstein@ntnu.no. You can also see some of my other work on my webpage: https://emmaskarstein.github.io/.
 
 
 # REFERENCES
