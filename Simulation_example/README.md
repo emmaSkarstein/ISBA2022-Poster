@@ -4,10 +4,6 @@ data
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-``` r
-library(INLA)
-```
-
 We here provide a simulation example that illustrates the missing data
 and measurement error model, with extensive comments.
 
@@ -23,6 +19,10 @@ The covariate
 is constructed to have both Berkson and classical measurement error, and
 it is also missing (completely at random) approximately 20% of the
 observations.
+
+``` r
+library(INLA)
+```
 
 # Data generation
 
@@ -206,10 +206,8 @@ is for encoding the Berkson error model.
 -   `f(id.r, weight.r, ...)`: `id.r` contains the
     ![\\boldsymbol{c}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cboldsymbol%7Bc%7D "\boldsymbol{c}")-values,
     encoded as an i.i.d. Gaussian random effect, and weighted with
-    `weight.c` to ensure the correct signs in the joint model. \[The
-    `values` option contains the vector of all values assumes by the
-    covariate for which the effect is estimated. What does this mean?\]
-    The precision `prec` of the random effect is fixed at
+    `weight.c` to ensure the correct signs in the joint model. The
+    precision `prec` of the random effect is fixed at
     ![\\exp(-15)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cexp%28-15%29 "\exp(-15)"),
     which is necessary since the uncertainty in
     ![\\boldsymbol{c}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cboldsymbol%7Bc%7D "\boldsymbol{c}")
@@ -217,7 +215,7 @@ is for encoding the Berkson error model.
     joint model, which defines the exposure component.
 -   `f(u.b.tilde, ...)`: This is a Gaussian random effect that ensures
     that we capture the additional variance due to the Berkson
-    measurement error. \[why do we use “values” here?\]
+    measurement error.
 
 ``` r
 formula = Y ~ beta.0 - 1 +
@@ -287,11 +285,11 @@ model1 <- inla(formula, data = dd,
 # Results
 
     #>                      mean         sd true_values
-    #> alpha.0         1.0079051 0.06033315         1.0
-    #> alpha.z         0.5189650 0.06281501         0.5
-    #> beta.0          1.1001236 0.06305786         1.0
-    #> beta.z          0.9458352 0.05537032         1.0
-    #> Beta for beta.x 0.9485297 0.03871732         1.0
+    #> alpha.0         1.0443133 0.05727154         1.0
+    #> alpha.z         0.4389438 0.05491918         0.5
+    #> beta.0          0.9803619 0.06609120         1.0
+    #> beta.z          1.0142014 0.05097247         1.0
+    #> Beta for beta.x 0.9721970 0.04092628         1.0
 
 ``` r
 summary(model1)
@@ -315,13 +313,13 @@ summary(model1)
 #>    = inla.mode, safe = FALSE, debug = debug, ", " .parent.frame = 
 #>    .parent.frame)") 
 #> Time used:
-#>     Pre = 4.01, Running = 1.56, Post = 0.0877, Total = 5.66 
+#>     Pre = 3.87, Running = 1.58, Post = 0.0849, Total = 5.53 
 #> Fixed effects:
 #>          mean    sd 0.025quant 0.5quant 0.975quant mode kld
-#> beta.0  1.100 0.063      0.976    1.101      1.222   NA   0
-#> beta.z  0.946 0.055      0.836    0.946      1.054   NA   0
-#> alpha.0 1.008 0.060      0.890    1.008      1.126   NA   0
-#> alpha.z 0.519 0.063      0.396    0.519      0.642   NA   0
+#> beta.0  0.980 0.066      0.850    0.981      1.107   NA   0
+#> beta.z  1.014 0.051      0.913    1.015      1.113   NA   0
+#> alpha.0 1.044 0.057      0.932    1.044      1.157   NA   0
+#> alpha.z 0.439 0.055      0.331    0.439      0.547   NA   0
 #> 
 #> Random effects:
 #>   Name     Model
@@ -331,15 +329,15 @@ summary(model1)
 #> 
 #> Model hyperparameters:
 #>                                             mean    sd 0.025quant 0.5quant
-#> Precision for the Gaussian observations    7.449 2.635      3.635    7.000
-#> Precision for the Gaussian observations[3] 0.463 0.033      0.402    0.462
-#> Beta for beta.x                            0.949 0.039      0.873    0.948
+#> Precision for the Gaussian observations    8.093 2.813      4.017    7.614
+#> Precision for the Gaussian observations[3] 0.545 0.041      0.469    0.544
+#> Beta for beta.x                            0.972 0.041      0.892    0.972
 #>                                            0.975quant mode
-#> Precision for the Gaussian observations        13.875   NA
-#> Precision for the Gaussian observations[3]      0.532   NA
-#> Beta for beta.x                                 1.025   NA
+#> Precision for the Gaussian observations        14.945   NA
+#> Precision for the Gaussian observations[3]      0.632   NA
+#> Beta for beta.x                                 1.053   NA
 #> 
-#> Marginal log-Likelihood:  -11773.74 
+#> Marginal log-Likelihood:  -11709.76 
 #>  is computed 
 #> Posterior summaries for the linear predictor and the fitted values are computed
 #> (Posterior marginals needs also 'control.compute=list(return.marginals.predictor=TRUE)')

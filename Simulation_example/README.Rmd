@@ -16,14 +16,16 @@ knitr::opts_chunk$set(
 
 
 
-```{r setup, warning=FALSE, message = FALSE}
-library(INLA)
-```
+
 
 We here provide a simulation example that illustrates the missing data and measurement error model, with extensive comments.
 
 
 For this example, we simulate a linear regression model with a mismeasured covariate $\boldsymbol{x}$, observed as $\boldsymbol{w}$, as well as a covariate without measurement error, $\boldsymbol{z}$. The covariate $\boldsymbol{x}$ is constructed to have both Berkson and classical measurement error, and it is also missing (completely at random) approximately 20\% of the observations.
+
+```{r setup, warning=FALSE, message = FALSE}
+library(INLA)
+```
 
 # Data generation
 
@@ -163,8 +165,8 @@ Next, we set up the INLA formula. There are four fixed effects ($\beta_0$, $\bet
 
 
   - `f(beta.x, copy="id.r", ...)`: The `copy="id.r"` argument ensures that identical values are assigned to $\boldsymbol{r}$ in all components of the joint model. $\beta_x$, which is treated as a hyperparameter, is the scaling parameter of the copied process $\boldsymbol{r}^*$.
-  - `f(id.r, weight.r, ...)`: `id.r` contains the $\boldsymbol{c}$-values, encoded as an i.i.d. Gaussian random effect, and weighted with `weight.c` to ensure the correct signs in the joint model. [The `values` option contains the vector of all values assumes by the covariate for which the effect is estimated. What does this mean?] The precision `prec` of the random effect is fixed at $\exp(-15)$, which is necessary since the uncertainty in $\boldsymbol{c}$ is already modeled in the second level (column 2 of `Y`) of the joint model, which defines the exposure component.
-  - `f(u.b.tilde, ...)`: This is a Gaussian random effect that ensures that we capture the additional variance due to the Berkson measurement error. [why do we use "values" here?]
+  - `f(id.r, weight.r, ...)`: `id.r` contains the $\boldsymbol{c}$-values, encoded as an i.i.d. Gaussian random effect, and weighted with `weight.c` to ensure the correct signs in the joint model. The precision `prec` of the random effect is fixed at $\exp(-15)$, which is necessary since the uncertainty in $\boldsymbol{c}$ is already modeled in the second level (column 2 of `Y`) of the joint model, which defines the exposure component.
+  - `f(u.b.tilde, ...)`: This is a Gaussian random effect that ensures that we capture the additional variance due to the Berkson measurement error.
 
 
 ```{r echo = TRUE}
