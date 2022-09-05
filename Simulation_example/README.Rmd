@@ -165,7 +165,7 @@ Next, we set up the INLA formula. There are four fixed effects ($\beta_0$, $\bet
 
 
   - `f(beta.x, copy="id.r", ...)`: The `copy="id.r"` argument ensures that identical values are assigned to $\boldsymbol{r}$ in all components of the joint model. $\beta_x$, which is treated as a hyperparameter, is the scaling parameter of the copied process $\boldsymbol{r}^*$.
-  - `f(id.r, weight.r, ...)`: `id.r` contains the $\boldsymbol{c}$-values, encoded as an i.i.d. Gaussian random effect, and weighted with `weight.c` to ensure the correct signs in the joint model. The precision `prec` of the random effect is fixed at $\exp(-15)$, which is necessary since the uncertainty in $\boldsymbol{c}$ is already modeled in the second level (column 2 of `Y`) of the joint model, which defines the exposure component.
+  - `f(id.r, weight.r, ...)`: `id.r` contains the $\boldsymbol{c}$-values, encoded as an i.i.d. Gaussian random effect, and weighted with `weight.r` to ensure the correct signs in the joint model. The precision `prec` of the random effect is fixed at $\exp(-15)$, which is necessary since the uncertainty in $\boldsymbol{r}$ is already modeled in the second level (column 2 of `Y`) of the joint model, which defines the exposure component.
   - `f(u.b.tilde, ...)`: This is a Gaussian random effect that ensures that we capture the additional variance due to the Berkson measurement error.
 
 
